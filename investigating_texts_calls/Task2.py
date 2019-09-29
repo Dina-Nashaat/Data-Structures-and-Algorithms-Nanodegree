@@ -2,11 +2,11 @@
 Read file into texts and calls.
 """
 import csv
-with open('texts.csv', 'r') as f:
+with open('./investigating_texts_calls/texts.csv', 'r') as f:
     reader = csv.reader(f)
     texts = list(reader)
 
-with open('calls.csv', 'r') as f:
+with open('./investigating_texts_calls/calls.csv', 'r') as f:
     reader = csv.reader(f)
     calls = list(reader)
 
@@ -20,25 +20,37 @@ September 2016.".
 """
 
 def printLongestTimeOnPhone():
-    phoneWithMaxDuration, phonesDuration, maxDuration = '', {}, 0
+    phoneWithMaxDuration, phonesDuration = '', {}
     for call in calls:
-        incomingNumber, answeringNumber, duration, _  = call
+        incomingNumber, answeringNumber, _, duration  = call
         addPhoneDuration(incomingNumber, duration, phonesDuration)
         addPhoneDuration(answeringNumber, duration, phonesDuration)
-        phoneWithMaxDuration = getPhoneWithMaxDuration(incomingNumber, answeringNumber, phoneWithMaxDuration, phonesDuration)
+        phoneWithMaxDuration = getPhoneWithMaxDuration(
+            [incomingNumber, answeringNumber, phoneWithMaxDuration],
+            phonesDuration
+        )
     print(f"<{phoneWithMaxDuration}> spent the longest time, <{phonesDuration[phoneWithMaxDuration]}> seconds, on the phone during September 2016.")
-    return maxDuration
 
-def addPhoneDuration(phone, duration, dictionary):
-    if dictionary.get(phone):
-        dictionary[phone] += duration
+def addPhoneDuration(phone, duration, ds):
+    if ds.get(phone):
+        ds[phone] += int(duration)
     else:
-        dictionary[phone] = duration
+        ds[phone] = int(duration)
     
-def getPhoneWithMaxDuration(*args, ds):
+def getPhoneWithMaxDuration(phones, ds):
     maxDurationPhone = ''
-    for arg in args:
-        None
+    for phone in phones:
+        duration = ds.get(phone)
+        maxDuration = ds.get(maxDurationPhone)
+        if not maxDuration:
+            maxDurationPhone = phone
+        elif duration:
+            maxDurationPhone = phone if duration > maxDuration else maxDurationPhone
     return maxDurationPhone
+
+assert(getPhoneWithMaxDuration(
+    ['123', '443', '555', ''], 
+    {'123': 4, '443': 5, '555': 17}) == '555' 
+)
 
 printLongestTimeOnPhone()
