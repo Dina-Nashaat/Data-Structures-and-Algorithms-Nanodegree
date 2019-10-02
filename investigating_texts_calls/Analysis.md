@@ -3,7 +3,7 @@ __Note__: The following ignores the printing complexity in each function which s
 
 ## Task 0:
 **printFirstTextRecord**: 
-Getting first item from list : **O(1)**
+Getting first item from list : **O(1)**  
 **printLastCallRecord**:
 Getting last item from list : **O(1)**
 
