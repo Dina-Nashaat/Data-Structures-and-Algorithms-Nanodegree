@@ -9,6 +9,18 @@ Getting last item from list : **O(1)**
 
 ## Task 1:
 **printTelephoneNumbersCount**:
+```
+for call in calls: \\O(n)
+    incomingNumber, answeringNumber, _, _  = call
+    uniquePhones.add(incomingNumber) \\(O(1))
+    uniquePhones.add(answeringNumber)
+
+for text in texts: \\ O(m)
+    incomingNumber, answeringNumber, _ = text
+    uniquePhones.add(incomingNumber)
+    uniquePhones.add(answeringNumber)
+```
+
 Looping over calls and texts records, and adding numbers in a set for each loop : **O(n + m)**
 where n is the calls records length and m is the texts records length
 
