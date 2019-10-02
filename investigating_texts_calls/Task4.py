@@ -1,6 +1,7 @@
+from helpers.Task3 import insertLexicographic
+
 """
 Read file into texts and calls.
-It's ok if you don't understand how to read files.
 """
 import csv
 
@@ -25,3 +26,23 @@ Print a message:
 The list of numbers should be print out one per line in lexicographic order with no duplicates.
 """
 
+
+def identifyPossibleTelemarketers():
+    uniquePhones = set()
+    possibleTelemarketers = []
+    for text in texts:
+        incomingNumber, answeringNumber, _ = text
+        uniquePhones.add(incomingNumber)
+        uniquePhones.add(answeringNumber)
+
+    for call in calls:
+        _, answeringNumber, _, _  = call
+        uniquePhones.add(answeringNumber)
+
+    for call in calls:
+        incomingNumber, _, _, _  = call
+        if incomingNumber not in uniquePhones:
+            insertLexicographic(incomingNumber, possibleTelemarketers)
+    
+    print("These numbers could be telemarketers: ")
+    print('\n'.join(map(str, possibleTelemarketers))) 
