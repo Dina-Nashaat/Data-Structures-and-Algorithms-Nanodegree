@@ -1,6 +1,8 @@
+from helpers.Task3 import isBangaloreFixedLine, \
+  insertLexicographic, getAreaCode
+
 """
 Read file into texts and calls.
-It's ok if you don't understand how to read files.
 """
 import csv
 
@@ -32,7 +34,20 @@ Print the answer as part of a message:
 "The numbers called by people in Bangalore have codes:"
  <list of codes>
 The list of codes should be print out one per line in lexicographic order with no duplicates.
+"""
 
+def codesCalledByBangalore():
+  codesList = []
+  for call in calls:
+    incomingNumber, answeringNumber, _, _  = call
+    if(isBangaloreFixedLine(incomingNumber)):
+      insertLexicographic(getAreaCode(answeringNumber), codesList)
+
+  print("The numbers called by people in Bangalore have codes:")
+  print('\n'.join(map(str, codesList))) 
+
+
+"""
 Part B: What percentage of calls from fixed lines in Bangalore are made
 to fixed lines also in Bangalore? In other words, of all the calls made
 from a number starting with "(080)", what percentage of these calls
@@ -43,3 +58,18 @@ Print the answer as a part of a message::
 to other fixed lines in Bangalore."
 The percentage should have 2 decimal digits
 """
+
+def bangaloreToBangaloreCallPercent():
+  incomingBangaloreCount = 0
+  answeringBangaloreCount = 0
+  for call in calls:
+    incomingNumber, answeringNumber, _, _  = call
+    if isBangaloreFixedLine(incomingNumber):
+      incomingBangaloreCount += 1
+      if(isBangaloreFixedLine(answeringNumber)):
+        answeringBangaloreCount += 1
+  
+  percentage = (answeringBangaloreCount / incomingBangaloreCount) * 100
+  print(f"<{percentage:.2f}> percent of calls from fixed lines",
+  "in Bangalore are calls to other fixed lines in Bangalore.")
+  return None
