@@ -30,8 +30,7 @@ def printTelephoneNumbersCount():
         uniquePhones.add(incomingNumber)
         uniquePhones.add(answeringNumber)
     count = len(uniquePhones)
-    print(f"There are <{count}> different telephone numbers in the records.");
+    print(f"There are <{count}> different telephone numbers in the records.")
     return None
 
 
-printTelephoneNumbersCount()

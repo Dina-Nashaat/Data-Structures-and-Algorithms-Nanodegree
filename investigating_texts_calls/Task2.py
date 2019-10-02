@@ -1,12 +1,14 @@
+from helpers.Task2 import addPhoneDuration, getPhoneWithMaxDuration
+
 """
 Read file into texts and calls.
 """
 import csv
-with open('./investigating_texts_calls/texts.csv', 'r') as f:
+with open('texts.csv', 'r') as f:
     reader = csv.reader(f)
     texts = list(reader)
 
-with open('./investigating_texts_calls/calls.csv', 'r') as f:
+with open('calls.csv', 'r') as f:
     reader = csv.reader(f)
     calls = list(reader)
 
@@ -30,27 +32,3 @@ def printLongestTimeOnPhone():
             phonesDuration
         )
     print(f"<{phoneWithMaxDuration}> spent the longest time, <{phonesDuration[phoneWithMaxDuration]}> seconds, on the phone during September 2016.")
-
-def addPhoneDuration(phone, duration, ds):
-    if ds.get(phone):
-        ds[phone] += int(duration)
-    else:
-        ds[phone] = int(duration)
-    
-def getPhoneWithMaxDuration(phones, ds):
-    maxDurationPhone = ''
-    for phone in phones:
-        duration = ds.get(phone)
-        maxDuration = ds.get(maxDurationPhone)
-        if not maxDuration:
-            maxDurationPhone = phone
-        elif duration:
-            maxDurationPhone = phone if duration > maxDuration else maxDurationPhone
-    return maxDurationPhone
-
-assert(getPhoneWithMaxDuration(
-    ['123', '443', '555', ''], 
-    {'123': 4, '443': 5, '555': 17}) == '555' 
-)
-
-printLongestTimeOnPhone()

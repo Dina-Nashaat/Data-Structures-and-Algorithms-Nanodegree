@@ -33,8 +33,3 @@ def printLastCallRecord():
         f"Last record of calls, <{incomingNumber}> calls <{answeringNumber}> at time <{time}>, lasting <{during}> seconds"
     )
     return None
-
-printFirstTextRecord()
-printLastCallRecord()
-print(len(calls))
-print(len(texts))
