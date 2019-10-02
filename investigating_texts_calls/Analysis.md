@@ -43,7 +43,7 @@ Looping over calls and each time setting phone with maximum duration : **O(n)**
 ```
 for call in calls: // O(n)
     incomingNumber, answeringNumber, _, _  = call
-    if(isBangaloreFixedLine(incomingNumber)): //O(m) where m is string length to match
+    if(isBangaloreFixedLine(incomingNumber)): //O(k) where k is string length to match
         insertLexicographic(getAreaCode(answeringNumber), codesList) //O(log(m) + m) -- Insertion with binary search
 ```
 ```
@@ -51,11 +51,11 @@ def insertLexicographic(value, sortedArray):
   if len(sortedArray) == 0:
     sortedArray.append(value)
     return
-  found, index = searchAndGetIndex(value, sortedArray) \\O(log(n))
+  found, index = searchAndGetIndex(value, sortedArray) \\O(log(m))
   if not found:
-    sortedArray.insert(index, value) \\O(n)
+    sortedArray.insert(index, value) \\O(m)
 ```
-for looping over calls and each time searching for value and inserting in the right place in a sorted array: O(n * (n + log(n))) => **O(n * m)** 
+for looping over calls and each time searching for value and inserting in the right place in a sorted array: O(n * (m + log(m))) => **O(n * m)** 
 where n is the length of calls array and m is the length of unique sorted array
 
 **B - bangaloreToBangaloreCallPercent**
@@ -66,11 +66,11 @@ for call in calls: // O(n)
     incomingNumber, answeringNumber, _, _  = call
     if isBangaloreFixedLine(incomingNumber): //O(m)
         incomingBangaloreCount += 1
-        if(isBangaloreFixedLine(answeringNumber)):
-        answeringBangaloreCount += 1
+        if(isBangaloreFixedLine(answeringNumber)): //O(m)
+            answeringBangaloreCount += 1
 ```
 for looping over calls and checking each string against a regular expression: **O(n * m)**
-where n is the number of calls and m is the lenght of number string
+where n is the number of calls and m is the length of phone string
 
 ## Task 4A:
 **identifyPossibleTelemarketers**:
