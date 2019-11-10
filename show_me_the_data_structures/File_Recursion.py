@@ -23,7 +23,7 @@ def find_files(suffix, path):
             paths_list = paths_list + find_files(suffix, full_path)
         else:
             if (entry.endswith(suffix)):
-                paths_list.append(entry)
+                paths_list.append(full_path)
     return paths_list
     
 print(find_files('.c', './testdir'))
