@@ -53,6 +53,7 @@ class BlockChain:
 
 
 # Test 1
+print("Test 1")
 myBlockChain = BlockChain()
 myBlockChain.add_block('New Data1')
 myBlockChain.add_block('New Data2')
@@ -61,10 +62,10 @@ myBlockChain.add_block('New Data4')
 myBlockChain.add_block('New Data5')
 myBlockChain.add_block('New Data6')
 myBlockChain.add_block('New Data7')
-
 myBlockChain.print_block()
 
 # Test 2
+print("Test 2")
 myBlockChain = BlockChain()
 myBlockChain.print_block()
 

@@ -1,7 +1,7 @@
 # LRU Cache
 ## Data Structures used:
 - Doubly Linked List
-- Dictionary
+- Dictionary  
  For an LRU cache, the least recent item gets replaced with the newest item when the cache reaches its capacity. To achieve this purpose, a doubly linked list is used as a queue, every time an item is set, the old key (head) is removed and the new key is enqueued into the `keys_list` and if the enqueued item already exists, it gets deleted from the doubly linked list. The same algorithm goes when accessing an item, however, we don't remove the least recently used, but we update the tail of the queue.
  
 To delete in constant time, a doubly linked list was used. Given a node, we update its previous and next references in constant time.
