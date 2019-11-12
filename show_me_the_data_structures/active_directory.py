@@ -32,9 +32,10 @@ def is_user_in_group(user, group):
         return True
     else:
         for child_group in group.get_groups():
-            if is_user_in_group(user, child_group):
-                return True
+            return is_user_in_group(user, child_group)
     return False
+
+# Test 1
 
 parent = Group("parent")
 child = Group("child")
@@ -47,3 +48,22 @@ child.add_group(sub_child)
 parent.add_group(child)
 
 print(is_user_in_group('sub_child_user', parent))
+
+# Test 2
+
+parent = Group("parent")
+child = Group("child")
+sub_child = Group("subchild")
+
+sub_child_user = "sub_child_user"
+sub_child.add_user(sub_child_user)
+
+child.add_group(sub_child)
+parent.add_group(child)
+
+print(is_user_in_group('', parent))
+
+# Test 3
+
+parent = Group("parent")
+print(is_user_in_group("sub_child_user", parent))

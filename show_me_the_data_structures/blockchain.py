@@ -52,6 +52,7 @@ class BlockChain:
         print(f'[{block.index}] => {block.data}')
 
 
+# Test 1
 myBlockChain = BlockChain()
 myBlockChain.add_block('New Data1')
 myBlockChain.add_block('New Data2')
@@ -62,3 +63,8 @@ myBlockChain.add_block('New Data6')
 myBlockChain.add_block('New Data7')
 
 myBlockChain.print_block()
+
+# Test 2
+myBlockChain = BlockChain()
+myBlockChain.print_block()
+

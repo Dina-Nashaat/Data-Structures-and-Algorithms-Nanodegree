@@ -26,4 +26,6 @@ def find_files(suffix, path):
                 paths_list.append(full_path)
     return paths_list
     
-print(find_files('.c', './testdir'))
+print('Test 1', find_files('.c', './testdir'))
+print('Test 2', find_files('.c', './emptydir'))
+print('Test 3', find_files('.txt', './testdir'))
