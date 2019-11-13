@@ -44,12 +44,19 @@ class BlockChain:
         )
         self.map[self.tail.hash] = self.tail
     
-    def print_block(self):
+    def print_blockchain(self):
         block = self.tail
         while not block.is_genesis:
-            print(f'[{block.index}] => {block.data}')
+            self.__print_statement(block)
             block = self.map[block.previous_hash]
-        print(f'[{block.index}] => {block.data}')
+    
+    def __print_statement(self, block):
+        print(f'Block Index => {block.index}')
+        print(f'timestamp => {block.timestamp}')
+        print(f'data => {block.data}')
+        print(f'hash => {block.hash}')
+        print(f'previous hash => {block.previous_hash}')
+        print('--------------------')
 
 
 # Test 1
@@ -62,10 +69,17 @@ myBlockChain.add_block('New Data4')
 myBlockChain.add_block('New Data5')
 myBlockChain.add_block('New Data6')
 myBlockChain.add_block('New Data7')
-myBlockChain.print_block()
+myBlockChain.print_blockchain()
 
 # Test 2
 print("Test 2")
 myBlockChain = BlockChain()
-myBlockChain.print_block()
+myBlockChain.print_blockchain()
+
+# Test 3
+print("Test 3")
+myBlockChain = BlockChain()
+myBlockChain.add_block(None)
+myBlockChain.add_block(None)
+myBlockChain.print_blockchain()
 

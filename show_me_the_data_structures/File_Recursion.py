@@ -17,15 +17,20 @@ def find_files(suffix, path):
        a list of paths
     """
     paths_list = []
-    for entry in os.listdir(path):
-        full_path = path + '/' + entry
-        if os.path.isdir(full_path):
-            paths_list = paths_list + find_files(suffix, full_path)
-        else:
-            if (entry.endswith(suffix)):
-                paths_list.append(full_path)
-    return paths_list
+    if(os.path.exists(path)):
+        for entry in os.listdir(path):
+            full_path = path + '/' + entry
+            if os.path.isdir(full_path):
+                paths_list = paths_list + find_files(suffix, full_path)
+            else:
+                if (entry.endswith(suffix)):
+                    paths_list.append(full_path)
+        return paths_list
+    else:
+        print(f"{path} does not exist")
+    
     
 print('Test 1', find_files('.c', './testdir'))
 print('Test 2', find_files('.c', './emptydir'))
 print('Test 3', find_files('.txt', './testdir'))
+print('Test 4', find_files('.c', './empty'))

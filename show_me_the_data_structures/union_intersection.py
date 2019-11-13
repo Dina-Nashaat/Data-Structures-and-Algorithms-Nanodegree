@@ -42,19 +42,19 @@ class LinkedList:
         return size
 
 def union(llist_1, llist_2):
-    visited = {}
+    visited = set()
     unionList = LinkedList()
     curr_node = llist_1.head
     while curr_node is not None:
-        if not visited.get(curr_node.value):
-            visited[curr_node.value] = True
+        if curr_node.value not in visited:
+            visited.add(curr_node.value)
             unionList.append(curr_node.value)
         curr_node = curr_node.next
     
     curr_node = llist_2.head
     while curr_node is not None:
-        if not visited.get(curr_node.value):
-            visited[curr_node.value] = True
+        if curr_node.value not in visited:
+            visited.add(curr_node.value)
             unionList.append(curr_node.value)
         curr_node = curr_node.next
     return unionList

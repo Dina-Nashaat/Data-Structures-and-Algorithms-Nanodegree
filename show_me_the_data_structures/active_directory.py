@@ -27,12 +27,13 @@ def is_user_in_group(user, group):
       user(str): user name/id
       group(class:Group): group to check user membership against
     """
-    all_users = group.get_users()
-    if user in all_users:
-        return True
-    else:
-        for child_group in group.get_groups():
-            return is_user_in_group(user, child_group)
+    if isinstance(group, Group):
+        all_users = group.get_users()
+        if user in all_users:
+            return True
+        else:
+            for child_group in group.get_groups():
+                return is_user_in_group(user, child_group)
     return False
 
 # Test 1
@@ -67,3 +68,8 @@ print(is_user_in_group('', parent))
 
 parent = Group("parent")
 print(is_user_in_group("sub_child_user", parent))
+
+# Test 4
+
+parent = Group("parent")
+print(is_user_in_group("sub_child_user", 'group'))

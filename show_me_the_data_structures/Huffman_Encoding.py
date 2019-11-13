@@ -14,7 +14,6 @@ class HuffmanNode(object):
     def __repr__(self):
         return f"{self.char} => {self.count}"
 
-
 class Huffman(object):
 
     def encode(self, data):
