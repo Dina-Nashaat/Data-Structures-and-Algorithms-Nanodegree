@@ -35,13 +35,16 @@ class BlockChain:
         self.tail = genesis_block
         
     def add_block(self, data):
-        self.index += 1
-        self.tail = Block(
-            self.index,
-            datetime.datetime.utcnow(),
-            data,
-            self.tail.hash
-        )
+        if data is not None:
+            self.index += 1
+            self.tail = Block(
+                self.index,
+                datetime.datetime.utcnow(),
+                data,
+                self.tail.hash
+            )
+        else:
+            print('ERROR: Cannot add a block with empty data')
         self.map[self.tail.hash] = self.tail
     
     def print_blockchain(self):
@@ -49,7 +52,8 @@ class BlockChain:
         while not block.is_genesis:
             self.__print_statement(block)
             block = self.map[block.previous_hash]
-    
+        self.__print_statement(block)
+
     def __print_statement(self, block):
         print(f'Block Index => {block.index}')
         print(f'timestamp => {block.timestamp}')
@@ -60,7 +64,7 @@ class BlockChain:
 
 
 # Test 1
-print("Test 1")
+print("Test 1\n")
 myBlockChain = BlockChain()
 myBlockChain.add_block('New Data1')
 myBlockChain.add_block('New Data2')
@@ -72,14 +76,15 @@ myBlockChain.add_block('New Data7')
 myBlockChain.print_blockchain()
 
 # Test 2
-print("Test 2")
+print("\nTest 2\n")
 myBlockChain = BlockChain()
 myBlockChain.print_blockchain()
 
 # Test 3
-print("Test 3")
+print("\nTest 3\n")
 myBlockChain = BlockChain()
 myBlockChain.add_block(None)
 myBlockChain.add_block(None)
+myBlockChain.add_block('New Data1')
 myBlockChain.print_blockchain()
 

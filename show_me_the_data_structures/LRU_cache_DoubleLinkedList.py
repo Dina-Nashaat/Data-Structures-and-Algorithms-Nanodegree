@@ -84,7 +84,7 @@ our_cache.set(1, 1)
 our_cache.set(2, 2)
 our_cache.set(3, 3)
 our_cache.set(4, 4)
-print("TEST 1: ")
+print("TEST 1: \n")
 print('1 => ', our_cache.get(1))      # returns -1 => [4, 2, 3]
 print('2 => ', our_cache.get(2))      # returns 2 => [3, 4, 2]
 print('9 => ', our_cache.get(9))      # returns -1 => [3, 4, 2]
@@ -93,7 +93,7 @@ our_cache.set(6, 6) # => [2, 5, 6]
 print('3 => ', our_cache.get(3))      # returns -1
 
 # TEST 2
-print("TEST 2: ")
+print("\n TEST 2: \n")
 our_cache = LRU_Cache(3)
 our_cache.set(1, 1)
 our_cache.set(2, 2)
@@ -107,7 +107,16 @@ our_cache.set(6, 6) # [3, 5, 6]
 print('3 => ', our_cache.get(3))      # returns 3
 
 # TEST 3
-print("TEST 3: ")
+print("\n TEST 3: \n")
 our_cache = LRU_Cache(0)
 our_cache.set(1, 1)
 print('1 => ', our_cache.get(1))      # returns -1
+
+print("\n TEST 4: \n")
+# TEST 4
+our_cache = LRU_Cache(2)
+our_cache.set(1, 1)
+our_cache.set(2, 2)
+our_cache.set(1, 10)
+print('1 => ', our_cache.get(1))               # return 10
+print('2 => ', our_cache.get(2))               # return 2

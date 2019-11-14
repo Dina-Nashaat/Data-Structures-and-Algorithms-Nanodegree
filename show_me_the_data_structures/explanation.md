@@ -28,10 +28,12 @@ Since each directory may contain files or other directories to explore, we shoul
 Let `f` be the total number of directoris and files found
 Let `d` be the total number of directories in one path  
 ## Time Complexity:
-Complexity is: `O(f + d)`
+Complexity is: `O(f * d)`
 
 ## Space Complexity:
-Complexity is: `O(d)`
+Let `m` be the space taken by 1 recursion call
+Let `n` be the maximum depth of the recursion tree
+Complexity is: `O(n * m)`
 
 # Huffman Encoding:
 ## Data Structure used:
@@ -90,15 +92,16 @@ to the previous node. To provide constant lookup / put time, we used a dictionar
 ## Data Structure used:
 - Arrays
 
-Similar to Files recursion problem, we iterate over all users in the group, and return if a user is found. If not, we iterate over all users in each group. Similar to a tree, an initial group is the node and files are leaves. Each group is either an internal node or a leaf. In the worst case a user is not found, we traverse the whole tree which explains a complexity of `O(u + g)`  
+Similar to Files recursion problem, we iterate over all users in the group, and return if a user is found. If not, we iterate over all users in each group. Similar to a tree, an initial group is the node and files are leaves. Each group is either an internal node or a leaf. In the worst case a user is not found, we traverse the whole tree which explains a complexity of `O(u * g)`  
 
 ### Time Complexity:
-`O(u + g)`  
+`O(u * g)`  
 where u is number of users and g is the number of groups in the group tree
 
 ### Space Complexity:
-`O(g)`  
-where u is number of users and g is the number of groups in the group tree
+Let `m` be the space taken by 1 recursion call
+Let `n` be the maximum depth of the recursion tree
+`O(u * g)`
 
 
 # Union Intersection:
