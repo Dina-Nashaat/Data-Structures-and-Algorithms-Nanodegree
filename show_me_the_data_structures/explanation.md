@@ -101,7 +101,7 @@ where u is number of users and g is the number of groups in the group tree
 ### Space Complexity:
 Let `m` be the space taken by 1 recursion call
 Let `n` be the maximum depth of the recursion tree
-`O(u * g)`
+`O(n * m)`
 
 
 # Union Intersection:
