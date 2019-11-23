@@ -45,5 +45,5 @@ class TestDutchFlag(unittest.TestCase):
 
     
 if __name__ == '__main__':
-    print("\n =========== PROBLEM 6 TESTS ==========")
+    print("\n =========== PROBLEM 4 TESTS ==========")
     unittest.main()
