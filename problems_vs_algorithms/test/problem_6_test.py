@@ -3,7 +3,7 @@ import sys
 sys.path.append('../')
 from problems_vs_algorithms.problem_6 import get_min_max
 
-class TestSearchRotated(unittest.TestCase):
+class TestMinMax(unittest.TestCase):
     def test_problem_6_returns_max_min_within_array_with_even_size(self):
         l = [i for i in range(1, 11)]
         print('\033[32m', "\nProblem 6: return max and min from unsorted array of even size: ", '\033[0m')
